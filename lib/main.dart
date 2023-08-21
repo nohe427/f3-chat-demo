@@ -16,7 +16,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -89,14 +88,6 @@ class MyHomePage extends StatelessWidget {
           ]);
         },
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () =>
-      //       Provider.of<AppState>(context, listen: false).flipAuthState(),
-      //   tooltip: 'Increment',
-      //   child: Consumer<AppState>(builder: (context, value, child) {
-      //     return Text(value.isLoggedIn ? "Logout" : "Login");
-      //   }),
-      // ),
     );
   }
 }
