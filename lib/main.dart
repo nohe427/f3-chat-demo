@@ -62,8 +62,7 @@ class MyHomePage extends StatelessWidget {
             );
           }
           return Column(children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.79,
+            Expanded(
               child: value.messages.isEmpty
                   ? const Center(
                       child: Text("Start chatting"),
@@ -79,11 +78,14 @@ class MyHomePage extends StatelessWidget {
                         );
                       })),
             ),
-            MessageBar(
-                messageBarHitText: "Whats on your mind?",
-                onSend: (input) {
-                  value.addMessage(input);
-                }),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: MessageBar(
+                  messageBarHitText: "Whats on your mind?",
+                  onSend: (input) {
+                    value.addMessage(input);
+                  }),
+            ),
           ]);
         },
       ),
