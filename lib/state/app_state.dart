@@ -20,7 +20,7 @@ class AppState extends ChangeNotifier {
 
   StreamSubscription? sub;
 
-  final List<Message> messages = [];
+  List<Message> messages = [];
 
   Future<void> init() async {
     await Firebase.initializeApp(
@@ -34,11 +34,13 @@ class AppState extends ChangeNotifier {
         sub?.cancel();
         isLoggedIn = false;
         messages.clear();
+        notifyListeners();
         return;
       }
       isLoggedIn = true;
       debugPrint(event.uid);
       listenToFirestore();
+      notifyListeners();
     });
   }
 
@@ -50,7 +52,16 @@ class AppState extends ChangeNotifier {
     await auth.signInAnonymously();
   }
 
+  Future<void> flipAuthState() async {
+    if (isLoggedIn) {
+      await signOut();
+    } else {
+      await signIn();
+    }
+  }
+
   void listenToFirestore() {
+    debugPrint("Listening to firestore...");
     var currentUser = auth.currentUser;
     if (currentUser == null) {
       return;
@@ -63,12 +74,17 @@ class AppState extends ChangeNotifier {
           fromFirestore: (snapshot, _) => Message.fromFirestore(snapshot),
           toFirestore: (message, _) => message.toFirestore(),
         )
+        .orderBy('timestamp', descending: true)
+        .limit(10)
         .snapshots()
         .listen((event) {
+      messages.clear();
       for (var element in event.docs) {
-        debugPrint(element.data().toString());
+        debugPrint(
+            "${element.data().input} \n ${element.data().output ?? ""} ");
         messages.add(element.data());
       }
+      notifyListeners();
     });
   }
 

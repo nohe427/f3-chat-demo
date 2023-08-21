@@ -24,15 +24,24 @@ class ChatMessage extends StatelessWidget {
           text: input,
           isSender: true,
           color: const Color.fromARGB(255, 111, 19, 168),
+          textStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+          ),
         ),
         output != ""
             ? BubbleSpecialTwo(
-                text: input,
-                isSender: true,
+                text: output,
+                isSender: false,
                 color: const Color.fromARGB(255, 214, 213, 213),
+                textStyle: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                ),
               )
             : Container(),
-        timestamp != null ? DateChip(date: timestamp!.toDate()) : Container(),
+        // timestamp != null ? DateChip(date: timestamp!.toDate()) : Container(),
       ],
     );
   }

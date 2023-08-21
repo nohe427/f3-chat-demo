@@ -1,3 +1,4 @@
+import 'package:chat_bubbles/chat_bubbles.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/components/chat_message.dart';
 import 'package:myapp/state/app_state.dart';
@@ -38,34 +39,62 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 32.0),
+            child: ElevatedButton(
+              onPressed: () =>
+                  Provider.of<AppState>(context, listen: false).flipAuthState(),
+              child: Consumer<AppState>(builder: (context, value, child) {
+                return Text(value.isLoggedIn ? "Logout" : "Login");
+              }),
+            ),
+          )
+        ],
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(title),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Consumer<AppState>(
-              builder: (context, value, child) {
-                return ListView.builder(
-                    itemCount: value.messages.length,
-                    itemBuilder: ((context, index) {
-                      return ChatMessage(
-                        input: value.messages[index].input,
-                        output: value.messages[index].output ?? "",
-                        timestamp: value.messages[index].timestamp,
-                      );
-                    }));
-              },
-            )
-          ],
-        ),
+      body: Consumer<AppState>(
+        builder: (context, value, child) {
+          if (!value.isLoggedIn) {
+            return const Center(
+              child: Text("Sign In To Get Started"),
+            );
+          }
+          return Column(children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.79,
+              child: value.messages.isEmpty
+                  ? const Center(
+                      child: Text("Start chatting"),
+                    )
+                  : ListView.builder(
+                      reverse: true,
+                      itemCount: value.messages.length,
+                      itemBuilder: ((context, index) {
+                        return ChatMessage(
+                          input: value.messages[index].input,
+                          output: value.messages[index].output ?? "",
+                          timestamp: value.messages[index].timestamp,
+                        );
+                      })),
+            ),
+            MessageBar(
+                messageBarHitText: "Whats on your mind?",
+                onSend: (input) {
+                  value.addMessage(input);
+                }),
+          ]);
+        },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Provider.of<AppState>(context, listen: false).signIn(),
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () =>
+      //       Provider.of<AppState>(context, listen: false).flipAuthState(),
+      //   tooltip: 'Increment',
+      //   child: Consumer<AppState>(builder: (context, value, child) {
+      //     return Text(value.isLoggedIn ? "Logout" : "Login");
+      //   }),
+      // ),
     );
   }
 }
