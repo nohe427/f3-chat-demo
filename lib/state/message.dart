@@ -18,7 +18,7 @@ class Message {
     if (output == null) {
       output = "";
     } else {
-      output = output['predictions'][0]['content'];
+      output = output; // ['predictions'][0]['content'];
     }
     return Message(
       input: data?['input'],

@@ -8,6 +8,9 @@ import 'package:myapp/state/message.dart';
 
 import '../firebase_options.dart';
 
+// const String collectionName = "messages";
+const String collectionName = "chats";
+
 class AppState extends ChangeNotifier {
   AppState() {
     init();
@@ -67,9 +70,9 @@ class AppState extends ChangeNotifier {
       return;
     }
     sub = firestore
-        .collection('vertex')
+        .collection('chats')
         .doc(currentUser.uid)
-        .collection('messages')
+        .collection(collectionName)
         .withConverter(
           fromFirestore: (snapshot, _) => Message.fromFirestore(snapshot),
           toFirestore: (message, _) => message.toFirestore(),
@@ -95,9 +98,9 @@ class AppState extends ChangeNotifier {
       return;
     }
     firestore
-        .collection("vertex")
+        .collection("chats")
         .doc(currentUser.uid)
-        .collection("messages")
+        .collection(collectionName)
         .add({
       "input": message,
       "timestamp": FieldValue.serverTimestamp(),

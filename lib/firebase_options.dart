@@ -44,39 +44,37 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBeHCCgW7KvSdHEwGszPgaYD9MrByEjrjc',
-    appId: '1:176703737429:web:c5c48140e2c32d59594edc',
-    messagingSenderId: '176703737429',
-    projectId: 'fire-d-demo',
-    authDomain: 'fire-d-demo.firebaseapp.com',
-    storageBucket: 'fire-d-demo.appspot.com',
+    apiKey: 'AIzaSyBvEcU2Y_dtvgr-rHXi4eYgD6hzPJATJ5E',
+    appId: '1:756419448869:web:0db57d3342489373c16fcc',
+    messagingSenderId: '756419448869',
+    projectId: 'f3-demo-proj',
+    authDomain: 'f3-demo-proj.firebaseapp.com',
+    storageBucket: 'f3-demo-proj.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBbBo1D83DvoyceVkbOTd71j8nTIDa_Z78',
-    appId: '1:176703737429:android:b7e62d9cfd63ff92594edc',
-    messagingSenderId: '176703737429',
-    projectId: 'fire-d-demo',
-    storageBucket: 'fire-d-demo.appspot.com',
+    apiKey: 'AIzaSyBoJnNlnRzD1yygLF5v5MyDG1FgOzklw3Q',
+    appId: '1:756419448869:android:ad80771d19f360bac16fcc',
+    messagingSenderId: '756419448869',
+    projectId: 'f3-demo-proj',
+    storageBucket: 'f3-demo-proj.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCKvwSq8SLaNtTX341QjQE55SjrgsBOoSw',
-    appId: '1:176703737429:ios:3f5f0b0214862715594edc',
-    messagingSenderId: '176703737429',
-    projectId: 'fire-d-demo',
-    storageBucket: 'fire-d-demo.appspot.com',
-    iosClientId: '176703737429-vc5egpsbsi4sqhh82tgkhau3kpu97bra.apps.googleusercontent.com',
+    apiKey: 'AIzaSyAvFx1o1QcZ_ohlz-OxLN_hl1OvXe8fZLs',
+    appId: '1:756419448869:ios:5b35eea1c099ce05c16fcc',
+    messagingSenderId: '756419448869',
+    projectId: 'f3-demo-proj',
+    storageBucket: 'f3-demo-proj.appspot.com',
     iosBundleId: 'com.example.myapp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCKvwSq8SLaNtTX341QjQE55SjrgsBOoSw',
-    appId: '1:176703737429:ios:26443f4912d9e51f594edc',
-    messagingSenderId: '176703737429',
-    projectId: 'fire-d-demo',
-    storageBucket: 'fire-d-demo.appspot.com',
-    iosClientId: '176703737429-vkordumlq69cqa6gaic37fnsj20v01au.apps.googleusercontent.com',
+    apiKey: 'AIzaSyAvFx1o1QcZ_ohlz-OxLN_hl1OvXe8fZLs',
+    appId: '1:756419448869:ios:bacaa361cf6112e5c16fcc',
+    messagingSenderId: '756419448869',
+    projectId: 'f3-demo-proj',
+    storageBucket: 'f3-demo-proj.appspot.com',
     iosBundleId: 'com.example.myapp.RunnerTests',
   );
 }
