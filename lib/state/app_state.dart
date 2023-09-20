@@ -8,9 +8,6 @@ import 'package:myapp/state/message.dart';
 
 import '../firebase_options.dart';
 
-// const String collectionName = "messages";
-const String collectionName = "chats";
-
 class AppState extends ChangeNotifier {
   AppState() {
     init();
@@ -24,6 +21,9 @@ class AppState extends ChangeNotifier {
   StreamSubscription? sub;
 
   List<Message> messages = [];
+  
+  // String collectionName = "messages"; // live bot
+String collectionName = "chats";
 
   Future<void> init() async {
     await Firebase.initializeApp(

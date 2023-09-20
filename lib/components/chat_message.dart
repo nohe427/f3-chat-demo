@@ -8,20 +8,23 @@ class ChatMessage extends StatelessWidget {
     this.input = "",
     this.output = "",
     this.timestamp,
+    this.collection = "chats"
   });
 
   final String input;
   final String output;
   final Timestamp? timestamp;
+  final String collection;
 
   @override
   Widget build(BuildContext context) {
+    var color = collection == "messages" ? Colors.green : Colors.red;
     return Column(
       children: <Widget>[
         BubbleSpecialTwo(
           text: input,
           isSender: true,
-          color: const Color.fromARGB(255, 111, 19, 168),
+          color: color,
           textStyle: const TextStyle(
             color: Colors.white,
             fontSize: 16,

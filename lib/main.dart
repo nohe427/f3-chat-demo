@@ -74,6 +74,7 @@ class MyHomePage extends StatelessWidget {
                           input: value.messages[index].input,
                           output: value.messages[index].output ?? "",
                           timestamp: value.messages[index].timestamp,
+                          collection: value.collectionName,
                         );
                       })),
             ),
