@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      debugShowCheckedModeBanner: false,
       home: const MyHomePage(title: 'F3 Chat App'),
     );
   }
@@ -81,7 +82,9 @@ class MyHomePage extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: MessageBar(
-                  messageBarHitText: "Whats on your mind?",
+                  messageBarHitText: value.collectionName == "chats"
+                      ? "Whats on your mind?"
+                      : "What would you like to chat about?",
                   onSend: (input) {
                     value.addMessage(input);
                   }),
